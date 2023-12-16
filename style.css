@@ -225,12 +225,18 @@ h2{
 p {
     display: inline-block;
 }
+/* Sirona
+.sirona{
+display: flex;
+width: 50%;
+text-align: center;
+} */
 
 /* Contact */
 .collum {
     box-sizing: border-box;
     float: left;
-    width: 50%;
+    width: 40%;
     margin-top: 6px;
     padding: 20px;
     }
@@ -254,6 +260,10 @@ p {
     margin-bottom: 16px;
     width: 600px;
     height: 48px;
+    }
+    .maps{
+        padding: -30px;
+        
     }
     iframe {
     display: inline-block;
@@ -283,6 +293,25 @@ p {
     justify-content: space-between;
 
     } 
+    .contact_clinic{
+        display: block;
+    }
+    .maps{
+        display: inline-block;
+        width: 90;
+    }
+    .contact{
+        display: inline-block;
+        box-sizing: border-box;
+        float: inline-end;
+    }
+    .contact li{
+      
+        font-size: 30px;
+        list-style: none;
+        margin: 10px;
+    }
+   
 @media (max-width:480px){
     .nav-ul {
         display: none;
