@@ -172,6 +172,7 @@ h2{
    }
    .p_antistress{
     display: inline-block;
+    font-size: 25px;
    }
   
   /* implants */
@@ -225,6 +226,63 @@ p {
     display: inline-block;
 }
 
+/* Contact */
+.collum {
+    box-sizing: border-box;
+    float: left;
+    width: 50%;
+    margin-top: 6px;
+    padding: 20px;
+    }
+    input {
+    display: flex;
+    width: 575px;
+    border-radius: 5px;
+    padding: 12px;
+    background-color: #EEEEEE;
+    border: 1px solid #ccc;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+    }
+    input[type=submit] {
+    background-color: black;
+    justify-content: center;
+    color: white;
+    padding: 12px;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    width: 600px;
+    height: 48px;
+    }
+    iframe {
+    display: inline-block;
+    }
+    footer {
+    display: inline-block;
+    box-sizing: border-box;
+    background-color:rgb(42, 36, 202);
+    width: 100%;
+    height: 125px;
+    background-position: center center;
+    }
+    i class {
+    color: white;
+    }
+    h4 {
+    display: flex;
+    color:white;
+    justify-content: right;
+    
+    } 
+    .icons {
+    color:white;
+    display: flex;
+    align-items:center;
+    margin: 30px;
+    justify-content: space-between;
+
+    } 
 @media (max-width:480px){
     .nav-ul {
         display: none;
