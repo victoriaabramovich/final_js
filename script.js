@@ -342,3 +342,13 @@ function validationEmail() {
 email.addEventListener("keyup", validationEmail);
 
 // NPM
+
+axios.get('https://reqres.in/api/users/2')
+.then(function (response) {
+  // handle success
+  console.log(response);
+})
+.catch(function (error) {
+  // handle error
+  console.log(error);
+});

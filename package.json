@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/victoriaabramovich/final_js/issues"
   },
-  "homepage": "https://github.com/victoriaabramovich/final_js#readme"
+  "homepage": "https://github.com/victoriaabramovich/final_js#readme",
+  "dependencies": {
+    "axios": "^1.6.2"
+  }
 }
