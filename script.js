@@ -357,3 +357,5 @@ axios.get('https://reqres.in/api/users/2')
 // export(contactidan) - import(mtavar script.js-shi)
 import { telefon } from "./contact";
 
+telefon();
+
