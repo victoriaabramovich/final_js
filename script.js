@@ -128,3 +128,15 @@ function checkCookies() {
 }
 
 checkCookies();
+
+
+// Ajax
+let requistObject = new XMLHttpRequest();
+
+requistObject.addEventListener('load', function() {
+    console.log(this);
+});
+
+requistObject.open('GET', 'https://reqres.in/api/users?page=2');
+requistObject.send();
+
