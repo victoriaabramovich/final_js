@@ -115,7 +115,7 @@ function checkCookies() {
     let cookieNote = document.getElementById('cookie_note');
     let cookieBtnAccept = cookieNote.querySelector('.cookie_accept');
 
-    // Если куки cookies_policy нет или она просрочена, то показываем уведомление
+    // Если куки cookies_policy нет или она просрочена(уведомление) 
     if (!getCookie('cookies_policy')) {
         cookieNote.classList.add('show');
     }
@@ -130,13 +130,107 @@ function checkCookies() {
 checkCookies();
 
 
-// Ajax
-let requistObject = new XMLHttpRequest();
+// Ajax GET
 
-requistObject.addEventListener('load', function() {
-    console.log(this);
-});
+// let requistObject = new XMLHttpRequest();
 
-requistObject.open('GET', 'https://reqres.in/api/users?page=2');
-requistObject.send();
+// requistObject.addEventListener('load', function() {
+//     console.log(this.responseText);
+// });
+
+// requistObject.open('GET', 'https://reqres.in/api/users?page=2');
+// requistObject.send();
+
+
+// // Accept JSON (взятые данные)
+
+// let requistObjectNew = new XMLHttpRequest();
+
+// requistObjectNew.addEventListener('load', function() {
+// let acceptInfoText = this.responseText;
+// let acceptInfoJs = JSON.parse(acceptInfoText);
+// console.log(acceptInfoJs);
+// });
+
+// // UL li damateba
+// let requistObjectNew = new XMLHttpRequest();
+
+// requistObjectNew.addEventListener('load', function() {
+
+// let ulElements = document.createElement('ul');
+
+// acceptInfoJs.data.forEach((item)=> {
+//     let liElement = document.createElement('li');
+//     liElement.textContent = `${item.first_name} ${item.last_name}`;
+//     ulElements.appendChild(liElement);
+// });
+
+// document.getElementById('api-info').appendChild(ulElements);
+// });
+
+// requistObjectNew.open('GET', 'https://reqres.in/api/users?page=2');
+// requistObjectNew.send();
+
+// Post method
+
+let divPost = document.getElementById('api-info');
+
+
+function ajaxPosts(){
+    let requist = new XMLHttpRequest();
+    requist.open("GET", "https://jsonplaceholder.typicode.com/posts");
+    requist.addEventListener('load',function(){
+        // console.log(requist.responseText);
+
+        let data = JSON.parse(requist.responseText);
+
+        data.forEach(element =>{
+            createPost(element);
+        });
+
+        console.log(date);
+    });
+    requist.send();
+}
+
+function createPost(item) {
+    let divElement = document.createElement("div");
+    divElement.classList.add("post");
+
+    let h2PostId = document.createElement("h2");
+    h2PostId.textContent = item.id;
+
+    let h3PostTitle = document.createElement("h3");
+    h3PostTitle.textContent = item.title;
+
+    divElement.appendChild(h2PostId);
+    divElement.appendChild(h3PostTitle);
+
+    divPost.appendChild(divElement);
+    console.log(divElement);
+}
+
+ajaxPosts();
+
+
+
+
+
+
+// Delete method
+ 
+//  deleteBtn.addEventListener("click", function (event) {
+//     event.stopPropagation();
+//     let deleteBtnId = event.target.getAttribute("data-id");
+//     console.log("DELETE BUTTON", deleteBtnId);
+//     let DeleteUrl = `https://jsonplaceholder.typicode.com/posts/${deleteBtnId}`;
+//     console.log(DeleteUrl);
+
+//     fetch(DeleteUrl, {
+//       method: "DELETE",
+//     }).then(() => divElement.remove());
+//   });
+
+//   divWraperPost.appendChild(divElement);
+// });
 
