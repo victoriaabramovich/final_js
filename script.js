@@ -306,12 +306,12 @@ let icon = document.getElementById("showIcon");
 showHidePassword = () => {
   if (passwShow.type == "password") {
     passwShow.setAttribute("type", "text");
-    icon.classList.remove("fa-eye");
+    // icon.classList.remove("fa-eye");
     icon.classList.add("fa-eye-slash");
   } else {
     passwShow.setAttribute("type", "password");
     icon.classList.add("fa-eye");
-    icon.classList.remove("fa-eye-slash");
+    // icon.classList.remove("fa-eye-slash");
   }
 };
 
@@ -340,3 +340,5 @@ function validationEmail() {
 }
 
 email.addEventListener("keyup", validationEmail);
+
+// NPM
