@@ -13,30 +13,30 @@ burgerElement.addEventListener('click', function() {
 })
 // Slider
 let slideIndex = 1;
-/* Вызываем функцию, которая реализована ниже: */
+/* Вызываю функцию */
 showSlides(slideIndex);
 
-/* Увеличиваем индекс на 1 — показываем следующий слайд: */
+/* Увеличиваю индекс на 1 — идет следующий слайд: */
 function nextSlide() {
     showSlides(slideIndex += 1);
 }
 
-/* Уменьшаем индекс на 1 — показываем предыдущий слайд: */
+/* Уменьшаю индекс на 1 — идет предыдущий слайд: */
 function previousSlide() {
     showSlides(slideIndex -= 1);  
 }
 
-/* Устанавливаем текущий слайд: */
+/* Устанавливаю текущий слайд: */
 function currentSlide(n) {
     showSlides(slideIndex = n);
 }
 
 /* Функция перелистывания: */
 function showSlides(n) {
-    /* Обращаемся к элементам с названием класса "item", то есть к картинкам: */
+    /* Вызываем элемент с названием класса "item", то есть к картинкам: */
     let slides = document.getElementsByClassName("item");
     
-    /* Проверяем количество слайдов: */
+    /* Проверяю количество слайдов: */
     if (n > slides.length) {
       slideIndex = 1
     }
@@ -44,11 +44,11 @@ function showSlides(n) {
         slideIndex = slides.length
     }
   
-    /* Проходим по каждому слайду в цикле for: */
+    /* Прохожу по каждому слайду в цикле for: */
     for (let slide of slides) {
         slide.style.display = "none";
     }
-    /* Делаем элемент блочным: */
+    /* Делаю элемент блочным: */
     slides[slideIndex - 1].style.display = "block";    
 }
 
@@ -212,25 +212,131 @@ function createPost(item) {
 
 ajaxPosts();
 
+// Filter
+  
+let array1 = ['hello1', 14, 24, 'hello2'];
+let newArray1 = array1.filter( (item) => typeof item);
+console.log(newArray1);
 
 
+// REgistracion form
 
 
+let formElement = document.getElementById("resgitration");
 
-// Delete method
- 
-//  deleteBtn.addEventListener("click", function (event) {
-//     event.stopPropagation();
-//     let deleteBtnId = event.target.getAttribute("data-id");
-//     console.log("DELETE BUTTON", deleteBtnId);
-//     let DeleteUrl = `https://jsonplaceholder.typicode.com/posts/${deleteBtnId}`;
-//     console.log(DeleteUrl);
+formElement.addEventListener("submit", function (event) {
+  event.preventDefault();
 
-//     fetch(DeleteUrl, {
-//       method: "DELETE",
-//     }).then(() => divElement.remove());
-//   });
+  let errors = {};
 
-//   divWraperPost.appendChild(divElement);
-// });
+  //username
+  let usernameValue = document.getElementById("usernamefield").value;
 
+  if (usernameValue == "") {
+    errors.username = "Username field can not be empty";
+  }
+
+  // password
+  let passwValue = document.getElementById("passwordfield").value;
+  let passw2Value = document.getElementById("passwordfield2").value;
+
+  if (passwValue == "") {
+    errors.passw = "Password field can not be empty";
+  }
+
+  if (passwValue != passw2Value) {
+    errors.passw2 = "Passwords do not match";
+  }
+
+  // radio
+  let gender = false;
+
+  formElement.querySelectorAll('[name = "gender"]').forEach((item) => {
+    if (item.checked) {
+      gender = true;
+    }
+  });
+
+  if (!gender) {
+    errors.gender = "Please select Your Gender";
+  }
+
+  //checkbox
+  let checkInput = document.getElementById("agree").checked;
+
+  if (!checkInput) {
+    errors.check = "You must Agree Our Terms and Conditions";
+  }
+
+  formElement.querySelectorAll(".error-text").forEach((el) => {
+    el.innerText = " ";
+  });
+
+  // Errors 
+  for (let item in errors) {
+    console.log(item); // check; gender; passw;username
+
+    let errorText = document.getElementById("error-" + item);
+
+    if (errorText) {
+      errorText.textContent = errors[item];
+    }
+  }
+
+  console.log(Object.keys(errors));
+  if (Object.keys(errors).length == 0) {
+    formElement.submit();
+  }
+
+  console.log(errors);
+});
+
+// error objs
+// let errors = {
+//   check: "You must Agree Our Terms and Conditions",
+//   gender: "Please select Your Gender",
+//   passw: "Password field can not be empty",
+//  username: "Username field can not be empty"
+// }
+
+// show hide password
+let passwShow = document.getElementById("passwordfield");
+let icon = document.getElementById("showIcon");
+
+showHidePassword = () => {
+  if (passwShow.type == "password") {
+    passwShow.setAttribute("type", "text");
+    icon.classList.remove("fa-eye");
+    icon.classList.add("fa-eye-slash");
+  } else {
+    passwShow.setAttribute("type", "password");
+    icon.classList.add("fa-eye");
+    icon.classList.remove("fa-eye-slash");
+  }
+};
+
+icon.addEventListener("click", showHidePassword);
+// function showHidePassword() {
+
+// email validation - regex
+let email = document.getElementById("emailfield");
+
+function validationEmail() {
+  let emailField = document.getElementById("emailfield").value;
+  let errortextEmail = document.getElementById("emailError");
+  let emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+  if (emailField.match(emailRegex)) {
+    errortextEmail.textContent = "Your Email is Valid";
+    errortextEmail.style.color = "green";
+  } else {
+    errortextEmail.textContent = "Your Email is Invalid";
+    errortextEmail.style.color = "red";
+  }
+
+  if (emailField == "") {
+    errortextEmail.textContent = "";
+  }
+}
+
+email.addEventListener("keyup", validationEmail);
